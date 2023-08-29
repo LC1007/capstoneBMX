@@ -10,6 +10,7 @@
                 <div class="navbar-nav ms-auto">
                   <a class="nav-link active" aria-current="page" href="#">Products</a>
                   <a class="nav-link" href="#">About Us</a>
+                  <router-link to="/signup" class="nav-link">Sign Up</router-link>
                   <a class="nav-link custom-btn" href="#">Lets Talk</a>
                 </div>
               </div>
