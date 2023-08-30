@@ -2,6 +2,8 @@ const express = require('express')
 const routes = express()
 const { products, users } = require('../model')
 const bodyParser = require('body-parser')
+const { authorize } = require('../middleware/AuthorizeUser')
+const path = require('path')
 
 // Fetch all products
 routes.get('/products', (req, res) =>{
@@ -26,6 +28,10 @@ routes.patch('/products/:bmxID', bodyParser.json(), (req, res) =>{
 // Delete a product
 routes.delete('/products/:bmxID', (req, res) =>{
     products.deleteProduct(req, res)
+})
+
+routes.get('/admin', authorize('admin'), (req, res) =>{
+    res.sendFile(path.resolve(__dirname, '../static/html/admin.html'))
 })
 
 // ================= Users ================== //
